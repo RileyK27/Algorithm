@@ -1,0 +1,41 @@
+# Repeat -string algorithm solve study
+
+
+from collections import Counter
+from tqdm import tqdm
+import math
+import os
+import random
+import re
+import sys
+
+def getFrequencyA(my_string):
+    count = dict(Counter(my_string))
+    
+    keys=count.keys()
+    
+    if 'a' in keys:
+        answer = count['a]
+    else:
+        answer = 0
+    return answer
+    
+    
+def repeatedString(s, n):
+    if len(s) == 1 and s!='a':
+        answer=0
+    elif len(s) ==1 and s== 'a':
+        answer = n
+    elif len(s) > n:
+        new_string = list(s[:n])
+        answer = getFrequencyA(new_string)
+        
+    else:
+        answer = 0
+        loop_num = n //len(s)
+        mod_num = n % len(s)
+        
+        s_a_count = getFrequencyA(s)
+        s_mod_count = getFrequencyA(s[:mod_num])
+        answer = answer + (s_a_count * loop_num) + s_mod_count
+    return answer
